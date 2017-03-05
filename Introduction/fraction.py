@@ -39,8 +39,46 @@ class Fraction:
 			return '{num}/{den}'.format(num=self.num, den=self.den)
 
 	def __eq__(self, other):
+		"""Deep equality is equality by the same value, not by the same reference."""
 		firstnum = self.num * other.den
 		secondnum = other.num * self.den
 
 		return firstnum == secondnum
+
+	def __mul__(self, other):
+		"""Multiply"""
+		newnum = self.num * other.num
+		newden = self.den * other.den
+		common = gcd(newnum, newden)
+		return Fraction(newnum // common, newden // common)
+
+	def __sub__(self, other):
+		"""Subtract"""
+		newnum = self.num * other.den - self.den * other.num
+		newden = self.den * other.den
+		common = gcd(newnum, newden)
+		return Fraction(newnum // common, newden // common)
+
+	def __div__(self, other):
+		"""Division"""
+		newnum = self.num * other.den
+		newden = self.den * other.num
+		common = gcd(newnum, newden)
+		return Fraction(newnum // common, newden // common)
+
+	def __lt__(self, other):
+		"""Perform less than operation
+		   Returns boolean
+		"""
+		num1 = self.num / self.den
+		num2 = other.num / other.den
+		return num1 < num2
+
+	def __gt__(self, other):
+		"""Perform greater than operation
+		   Returns boolean
+		"""
+		num1 = self.num / self.den
+		num2 = other.num / other.den
+		return num1 > num2
 
