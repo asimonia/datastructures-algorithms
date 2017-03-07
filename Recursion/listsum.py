@@ -1,3 +1,9 @@
+"""
+A recursive algorithm must have a base case.
+A recursive algorithm must change its state and move toward the base case.
+A recursive algorithm must call itself, recursively.
+"""
+
 def listsum(numList):
 	theSum = 0
 	for i in numList:
@@ -12,8 +18,3 @@ def listsum2(numList):
 		return numList[0] + listsum2(numList[1:])
 
 
-"""
-A recursive algorithm must have a base case.
-A recursive algorithm must change its state and move toward the base case.
-A recursive algorithm must call itself, recursively.
-"""
