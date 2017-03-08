@@ -32,12 +32,30 @@ def selectionSort(alist):
 	for every pass through the list.  Looks for the largest value
 	as it makes a pass and places it in the proper location.
 	"""	
-   for fillslot in range(len(alist)-1,0,-1):
-       positionOfMax=0
-       for location in range(1,fillslot+1):
-           if alist[location]>alist[positionOfMax]:
-               positionOfMax = location
+	for fillslot in range(len(alist) - 1, 0, -1):
+		positionOfMax=0
+		for location in range(1, fillslot + 1):
+			if alist[location] > alist[positionOfMax]:
+				positionOfMax = location
 
-       temp = alist[fillslot]
-       alist[fillslot] = alist[positionOfMax]
-       alist[positionOfMax] = temp
+		temp = alist[fillslot]
+		alist[fillslot] = alist[positionOfMax]
+		alist[positionOfMax] = temp
+
+
+def insertionSort(alist):
+	"""
+	The insertion sort, although still O(n^2), works in a slightly 
+	different way. It always maintains a sorted sublist in the lower 
+	positions of the list. Each new item is then “inserted” back into 
+	the previous sublist such that the sorted sublist is one item larger.
+	"""
+	for index in range(1, len(alist)):
+		currentvalue = alist[index]
+		position = index
+
+		while position > 0 and alist[position - 1] > currentvalue:
+			alist[position] = alist[position - 1]
+			position = position - 1
+
+		alist[position] = currentvalue
