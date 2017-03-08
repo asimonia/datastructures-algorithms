@@ -24,3 +24,20 @@ def shortBubbleSort(alist):
 				alist[i] = alist[i + 1]
 				alist[i + 1] = temp
 		passnum = passnum - 1
+
+
+def selectionSort(alist):
+	"""
+	Selection sort improves on the bubble sort by making only one exchange
+	for every pass through the list.  Looks for the largest value
+	as it makes a pass and places it in the proper location.
+	"""	
+   for fillslot in range(len(alist)-1,0,-1):
+       positionOfMax=0
+       for location in range(1,fillslot+1):
+           if alist[location]>alist[positionOfMax]:
+               positionOfMax = location
+
+       temp = alist[fillslot]
+       alist[fillslot] = alist[positionOfMax]
+       alist[positionOfMax] = temp
